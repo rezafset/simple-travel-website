@@ -1,0 +1,7 @@
+.left-portion{
+    display: flex;
+}
+.left-portion-img img{
+    height: 180px;
+    width: 230px;
+}

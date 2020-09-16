@@ -1,0 +1,27 @@
+.place-container{
+    display: flex;
+}
+.place-container h5{
+    font-size: 18px;
+}
+.place-container p{
+    font-size: 15px;
+}
+.place-left img{
+    height: 190px;
+    width: 240px;
+}
+.place-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.place-bottom-left{
+    display: flex;
+}
+.place-bottom-right{
+    display: flex;
+}
+.bottom-left img{
+    height: 15px;
+    width: 15px;
+}
