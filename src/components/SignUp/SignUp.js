@@ -7,32 +7,40 @@ import google from '../../resources/Icon/google.png';
 import './SignUp.css';
 
 const SignUp = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
         <Container className="d-flex justify-content-center mt-5">
             <Row>
                 <Col>
-                    <Form className="form p-4" onSubmit={handleSubmit(onSubmit)}>
+                    <Form className="form p-3" onSubmit={handleSubmit(onSubmit)}>
                         <h4 className="mb-4">Create an account</h4>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="First Name" />
+                            <Form.Control name="firstName" ref={register({ required: true, minLength: 4})} type="text" placeholder="First Name" />
+                            {errors.firstName && errors.firstName.type === "required" && <p>This field is required</p>}
+                            {errors.firstName && errors.firstName.type === "minLength" && <p>Minimum 4 length is required</p>}
                         </Form.Group>
 
                         <Form.Group >
-                            <Form.Control type="text" placeholder="Last Name" />
+                            <Form.Control name="lastName" ref={register({ required: true, minLength: 4})} type="text" placeholder="Last Name" />
+                            {errors.lastName && errors.lastName.type === "required" && <p>This field is required</p>}
+                            {errors.lastName && errors.lastName.type === "minLength" && <p>Minimum 4 length is required</p>}
                         </Form.Group>
 
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control name="email" ref={register({ required: true})} type="email" placeholder="Email" />
+                            {errors.email && <p>This field is required</p>}
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control name="password" ref={register({ required: true , minLength: 8})} type="password" placeholder="Password" />
+                            {errors.password && errors.password.type === "required" && <p>This field is required</p>}
+                            {errors.password && errors.password.type === "minLength" && <p>Minimum 8 length is required</p>}
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Confirm Password" />
+                            <Form.Control name="confirmPassword" ref={register({ required: true})} type="password" placeholder="Confirm Password" />
+                            {errors.confirmPassword && <p>This field is required</p>}
                         </Form.Group>
 
                         <Button className="btn-block" variant="warning" type="submit">

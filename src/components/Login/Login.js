@@ -7,7 +7,7 @@ import google from '../../resources/Icon/google.png';
 import './Login.css';
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
         <Container className="d-flex justify-content-center mt-5">
@@ -16,11 +16,13 @@ const Login = () => {
                     <Form className="form p-4" onSubmit={handleSubmit(onSubmit)}>
                         <h4 className="mb-4">Login</h4>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Email" />
+                        <Form.Control name="email" ref={register({ required: true})} type="email" placeholder="Email" />
+                            {errors.email && <p>This field is required</p>}
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Password" />
+                        <Form.Control name="password" ref={register({ required: true})} type="password" placeholder="Password" />
+                            {errors.password && <p>This field is required</p>}
                         </Form.Group>
 
                         <div className="login-text">
