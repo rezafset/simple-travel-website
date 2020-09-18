@@ -17,11 +17,11 @@ const DestinationDetails = () => {
         <Container className="destination-details">
             <Row>
                 <Col lg={6}>
-                    <h2>{destination.name}</h2>
-                    <p>{destination.longDescription}</p>
+                    <h2 className="heading">{destination.name}</h2>
+                    <p >{destination.longDescription}</p>
                 </Col>
                 <Col lg={6}>
-                    <Form className="form-portion">
+                    <Form className="form-portion bg-light">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Origin</Form.Label>
                             <Form.Control type="text" placeholder="Enter Origin" />

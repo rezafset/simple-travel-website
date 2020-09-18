@@ -1,6 +1,7 @@
 .logo{
     height: 50px;
     width: 110px;
+    border-radius: 15px;
 }
 .inputField{
     width: 270px;

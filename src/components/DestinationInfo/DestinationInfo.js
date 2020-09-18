@@ -11,7 +11,7 @@ const DestinationInfo = (props) => {
                 <Card className="card">
                     <Card.Img className="card-img" variant="top" src={bg} />
                     <Card.ImgOverlay>
-                        <h5 className="text-center">{name}</h5>
+                        <h5 className="text-light text-head">{name}</h5>
                     </Card.ImgOverlay>                               
                 </Card> 
             </div>

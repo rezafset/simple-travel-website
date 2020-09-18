@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -13,40 +13,39 @@ import Destination from './components/Destination/Destination';
 import DestinationInfo from './components/DestinationInfo/DestinationInfo';
 import DestinationDetails from './components/DestinationDetails/DestinationDetails';
 import Login from './components/Login/Login';
-import SignUp from './components/SignUp/SignUp';
 import DestinationPlace from './components/DestinationPlace/DestinationPlace';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-      <Container>
-        <Router>
-          <Header></Header>
-          <Switch>
-            <Route path="/destination">
-              <Destination></Destination>
-            </Route>
-            <Route path="/destinationInfo">
-                <DestinationInfo></DestinationInfo>
-            </Route>
-            <Route path="/destinationDetails/:destinationId">
-                <DestinationDetails></DestinationDetails>
-            </Route>
-            <Route path="/destinationPlace/:destinationId">
-              <DestinationPlace></DestinationPlace>
-            </Route>
-            <Route path="/login">
-              <Login></Login>
-            </Route>
-            <Route path="/signup">
-              <SignUp></SignUp>
-            </Route>
-            <Route exact path="/">
-              <Destination></Destination>
-            </Route>
-          </Switch>
-        </Router>
-      </Container>
-
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+          <Router>
+            <Header></Header>
+            <Switch>
+              <Route path="/destination">
+                <Destination></Destination>
+              </Route>
+              <Route path="/destinationInfo">
+                  <DestinationInfo></DestinationInfo>
+              </Route>
+              <Route path="/destinationDetails/:destinationId">
+                  <DestinationDetails></DestinationDetails>
+              </Route>
+              <PrivateRoute path="/destinationPlace/:destinationId">
+                <DestinationPlace></DestinationPlace>
+              </PrivateRoute>
+              <Route path="/login">
+                <Login></Login>
+              </Route>
+              <Route exact path="/">
+                <Destination></Destination>
+              </Route>
+            </Switch>
+          </Router>
+      </UserContext.Provider>
   );
 }
 
